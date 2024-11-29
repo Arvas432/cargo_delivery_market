@@ -10,6 +10,7 @@ import kotlinx.coroutines.*
 import models.Tender
 
 fun Application.configureDatabases() {
+
     val dbConnection: Connection = connectToPostgres(embedded = true)
     val tenderService = TenderService(dbConnection)
     val deliveryService = DeliveryService(dbConnection)

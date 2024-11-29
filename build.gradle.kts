@@ -4,7 +4,19 @@ plugins {
     alias(libs.plugins.ktor)
     alias(libs.plugins.kotlin.plugin.serialization)
 }
-
+ktor {
+    docker {
+        jreVersion.set(JavaVersion.VERSION_21)
+        localImageName.set("tenders")
+        portMappings.set(listOf(
+            io.ktor.plugin.features.DockerPortMapping(
+                81,
+                8081,
+                io.ktor.plugin.features.DockerPortMappingProtocol.TCP
+            )
+        ))
+    }
+}
 group = "com.example"
 version = "0.0.1"
 
